@@ -1,26 +1,38 @@
+import { InjectModel } from '@nestjs/mongoose';
 import { Injectable } from '@nestjs/common';
 import { CreateRaceDto } from './dto/create-race.dto';
 import { UpdateRaceDto } from './dto/update-race.dto';
+import { Race } from './entities/race.entity';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class RacesService {
-  create(createRaceDto: CreateRaceDto) {
-    return 'This action adds a new race';
+  constructor(@InjectModel(Race.name) private raceModel: Model<Race>) {}
+
+  async createMany(data: any) {
+    try {
+      return await this.raceModel.insertMany(data);
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 
-  findAll() {
-    return `This action returns all races`;
+  async deleteMany() {
+    try {
+      return await this.raceModel.deleteMany().exec();
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} race`;
-  }
-
-  update(id: number, updateRaceDto: UpdateRaceDto) {
-    return `This action updates a #${id} race`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} race`;
+  async count() {
+    try {
+      return await this.raceModel.countDocuments().exec();
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 }
