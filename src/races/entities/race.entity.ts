@@ -8,52 +8,88 @@ export class Race {
   @Prop({
     trim: true,
     maxLength: 150,
-    required: true,
+    default: '',
   })
   grandPrix: string;
 
   @Prop({
-    required: true,
+    default: '',
   })
   date: Date;
 
   @Prop({
     trim: true,
     maxLength: 150,
-    required: true,
+    default: '',
   })
   winner: string;
 
   @Prop({
     trim: true,
     maxLength: 150,
-    required: true,
+    default: '',
   })
   car: string;
 
   @Prop({
     trim: true,
     maxLength: 150,
-    required: true,
+    default: '',
   })
   laps: string;
 
   @Prop({
     trim: true,
     maxLength: 150,
-    required: true,
+    default: '',
   })
   time: string;
 
   @Prop({
     default: [],
   })
-  sub: Array<Object>;
+  results: Array<Object>;
+
+  @Prop({
+    default: [],
+  })
+  fastestLaps: Array<Object>;
+
+  @Prop({
+    default: [],
+  })
+  pitStopSummary: Array<Object>;
+
+  @Prop({
+    default: [],
+  })
+  startingGrid: Array<Object>;
+
+  @Prop({
+    default: [],
+  })
+  qualifying: Array<Object>;
+
+  @Prop({
+    default: [],
+  })
+  practice1: Array<Object>;
+
+  @Prop({
+    default: [],
+  })
+  practice2: Array<Object>;
+
+  @Prop({
+    default: [],
+  })
+  practice3: Array<Object>;
 
   @Prop({
     trim: true,
     maxLength: 150,
-    required: true,
+    default: '',
+    index: true,
   })
   year: string;
 }

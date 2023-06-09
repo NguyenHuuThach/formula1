@@ -17,8 +17,7 @@ export class CrawlController {
 
   @Get('races')
   async crawlRaces() {
-    await this.crawlService.crawlRaces();
-    return 'ok';
+    return await this.crawlService.crawlRaces();
   }
 
   @Get('fastest-laps')

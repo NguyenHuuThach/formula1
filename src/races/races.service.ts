@@ -35,4 +35,13 @@ export class RacesService {
       return error;
     }
   }
+
+  async findByYear(year: string = '2023') {
+    try {
+      return await this.raceModel.find({ year }).lean().exec();
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
 }

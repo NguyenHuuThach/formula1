@@ -37,6 +37,7 @@ export class FastestLap {
     trim: true,
     maxLength: 150,
     required: true,
+    index: true,
   })
   year: string;
 }
