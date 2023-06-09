@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
-export type RaceDocument = HydratedDocument<Race>;
+export type FastestLapDocument = HydratedDocument<FastestLap>;
 
 @Schema({ timestamps: true })
-export class Race {
+export class FastestLap {
   @Prop({
     trim: true,
     maxLength: 150,
@@ -13,16 +13,11 @@ export class Race {
   grandPrix: string;
 
   @Prop({
-    required: true,
-  })
-  date: Date;
-
-  @Prop({
     trim: true,
     maxLength: 150,
     required: true,
   })
-  winner: string;
+  driver: string;
 
   @Prop({
     trim: true,
@@ -36,19 +31,7 @@ export class Race {
     maxLength: 150,
     required: true,
   })
-  laps: string;
-
-  @Prop({
-    trim: true,
-    maxLength: 150,
-    required: true,
-  })
   time: string;
-
-  @Prop({
-    default: [],
-  })
-  sub: Array<Object>;
 
   @Prop({
     trim: true,
@@ -58,4 +41,4 @@ export class Race {
   year: string;
 }
 
-export const RaceSchema = SchemaFactory.createForClass(Race);
+export const FastestLapSchema = SchemaFactory.createForClass(FastestLap);
