@@ -38,4 +38,13 @@ export class FastestLapsService {
       return error;
     }
   }
+
+  async findByYear(year: string = '2023') {
+    try {
+      return await this.fastestLapModel.find({ year }).lean().exec();
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
 }
