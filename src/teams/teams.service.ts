@@ -1,17 +1,17 @@
 import { InjectModel } from '@nestjs/mongoose';
 import { Injectable } from '@nestjs/common';
-import { CreateRaceDto } from './dto/create-race.dto';
-import { UpdateRaceDto } from './dto/update-race.dto';
-import { Race } from './entities/race.entity';
+import { CreateTeamDto } from './dto/create-team.dto';
+import { UpdateTeamDto } from './dto/update-team.dto';
+import { Team } from './entities/team.entity';
 import { Model } from 'mongoose';
 
 @Injectable()
-export class RacesService {
-  constructor(@InjectModel(Race.name) private raceModel: Model<Race>) {}
+export class TeamsService {
+  constructor(@InjectModel(Team.name) private teamModel: Model<Team>) {}
 
   async createMany(data: any) {
     try {
-      return await this.raceModel.insertMany(data);
+      return await this.teamModel.insertMany(data);
     } catch (error) {
       console.log(error);
       return error;
@@ -20,7 +20,7 @@ export class RacesService {
 
   async deleteMany() {
     try {
-      return await this.raceModel.deleteMany().exec();
+      return await this.teamModel.deleteMany().exec();
     } catch (error) {
       console.log(error);
       return error;
@@ -29,7 +29,7 @@ export class RacesService {
 
   async count() {
     try {
-      return await this.raceModel.countDocuments().exec();
+      return await this.teamModel.countDocuments().exec();
     } catch (error) {
       console.log(error);
       return error;
@@ -38,7 +38,7 @@ export class RacesService {
 
   async findByYear(year: string = '2023') {
     try {
-      return await this.raceModel.find({ year }).lean().exec();
+      return await this.teamModel.find({ year }).lean().exec();
     } catch (error) {
       console.log(error);
       return error;

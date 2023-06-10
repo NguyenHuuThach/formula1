@@ -1,30 +1,6 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Formular1 test
 
 ## Installation
 
@@ -45,29 +21,76 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
-## Test
+## Tổ chức Schema
 
-```bash
-# unit tests
-$ yarn run test
+1. FastestLapSchema:
 
-# e2e tests
-$ yarn run test:e2e
+- Là dữ liệu: GIẢI THƯỞNG LAP NHANH NHẤT DHL.
+- Dữ liệu crawl ở Url:
+  https://www.formula1.com/en/results.html/2023/fastest-laps.html
 
-# test coverage
-$ yarn run test:cov
-```
+2. RaceSchema: tổ chức theo Bucket Pattern
 
-## Support
+- Là dữ liệu: CUỘC ĐUA theo mỗi năm.
+- bao gồm cả dữ liệu con của nó là:
+  . KẾT QUẢ CUỘC ĐUA theo mỗi khu vực theo mỗi năm.
+  . VÒNG NHANH NHẤT theo mỗi khu vực theo mỗi năm.
+  . TÓM TẮT DỪNG PIT theo mỗi khu vực theo mỗi năm
+  . LƯỚI BẮT ĐẦU theo mỗi khu vực theo mỗi năm.
+  . LUYỆN TẬP 3 theo mỗi khu vực theo mỗi năm.
+  . LUYỆN TẬP 2 theo mỗi khu vực theo mỗi năm.
+  . LUYỆN TẬP 1 theo mỗi khu vực theo mỗi năm.
+- Dữ liệu crawl ở Url:
+  https://www.formula1.com/en/results.html/2023/races.html
+  https://www.formula1.com/en/results.html/2023/races/1141/bahrain/race-result.html
+  https://www.formula1.com/en/results.html/2023/races/1141/bahrain/fastest-laps.html
+  https://www.formula1.com/en/results.html/2023/races/1141/bahrain/pit-stop-summary.html
+  https://www.formula1.com/en/results.html/2023/races/1141/bahrain/starting-grid.html
+  https://www.formula1.com/en/results.html/2023/races/1141/bahrain/qualifying.html
+  https://www.formula1.com/en/results.html/2023/races/1141/bahrain/practice-3.html
+  https://www.formula1.com/en/results.html/2023/races/1141/bahrain/practice-2.html
+  https://www.formula1.com/en/results.html/2023/races/1141/bahrain/practice-1.html
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+  3. TeamSchema: tổ chức theo Bucket Pattern
 
-## Stay in touch
+- Là dữ liệu: TEAM theo mỗi năm.
+- bao gồm cả dữ liệu con của nó là:
+  . BẢNG XẾP HẠNG của team đó theo mỗi năm.
+- Dữ liệu crawl ở Url:
+  https://www.formula1.com/en/results.html/2023/team.html
+  https://www.formula1.com/en/results.html/2023/team/alfa_romeo_ferrari.html
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+  4. DriverSchema: tổ chức theo Bucket Pattern
 
-## License
+- Là dữ liệu: TAY ĐUA theo mỗi năm.
+- bao gồm cả dữ liệu con của nó là:
+  . BẢNG XẾP HẠNG của tay đua đó theo mỗi năm.
+- Dữ liệu crawl ở Url:
+  htthttps://www.formula1.com/en/results.html/2023/drivers.html
+  https://www.formula1.com/en/results.html/2023/drivers/FERALO01/fernando-alonso.html
 
-Nest is [MIT licensed](LICENSE).
+## Tổ chức API
+
+1. Các API Crawl Data:
+
+- http://localhost:3000/crawl/races: Lấy dữ liệu kết quả cuộc đua.
+- http://localhost:3000/crawl/fastest-laps: Lấy dữ liệu DHL FASTEST LAP AWARD.
+- http://localhost:3000/crawl/teams: Lấy dữ liệu các team.
+- http://localhost:3000/crawl/drivers: Lấy dữ liệu các tay đua.
+
+2. 4 API tương ứng với việc lấy danh sách: cuộc đua, vòng nhanh nhất DHL, đội, các tay đua theo năm:
+
+- http://localhost:3000/races/{year}
+- http://localhost:3000/fastest-laps/{year}
+- http://localhost:3000/teams/{year}
+- http://localhost:3000/drivers/{year}
+
+- Mỗi phần tử trong danh sách trả về sẽ có các phần tử con chứa đầy đủ data của đối tượng.
+- VD: Lấy danh sách các cuộc đua trong năm 2023:
+  . Gồm danh sách trong năm 2023 theo mỗi khu vực.
+  . Trong mỗi khu vực sẽ gồm tất cả: kết quả cuộc đua, vòng nhanh nhất, tóm tắt dừng pit, lưới bắt đầu, qualifying, thực hành 1,...
+
+## SẼ Optimize
+
+- Dùng Redis để cache.
+- Dùng thư viện compression để giảm băng thông đường truyền.
