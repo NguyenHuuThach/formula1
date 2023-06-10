@@ -2,11 +2,17 @@
 
 Formular1 test
 
+## Prerequisites
+
+Have MongoDB, NodeJS
+
 ## Installation
 
 ```bash
 $ yarn install
 ```
+
+config mongodb uri in `app.module.ts`
 
 ## Running the app
 
@@ -94,3 +100,4 @@ $ yarn run start:prod
 
 - Dùng Redis để cache.
 - Dùng thư viện compression để giảm băng thông đường truyền.
+- Chạy CRON JOBS theo từng ngày để cập nhật dữ liệu mới nhất.
