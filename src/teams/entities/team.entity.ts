@@ -1,37 +1,35 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
-export type FastestLapDocument = HydratedDocument<FastestLap>;
+export type TeamDocument = HydratedDocument<Team>;
 
 @Schema({ timestamps: true })
-export class FastestLap {
+export class Team {
   @Prop({
     trim: true,
     maxLength: 150,
     default: '',
   })
-  grandPrix: string;
+  pos: string;
 
   @Prop({
     trim: true,
     maxLength: 150,
     default: '',
   })
-  driver: string;
+  team: string;
 
   @Prop({
     trim: true,
     maxLength: 150,
     default: '',
   })
-  car: string;
+  pts: string;
 
   @Prop({
-    trim: true,
-    maxLength: 150,
-    default: '',
+    default: [],
   })
-  time: string;
+  standings: Array<Object>;
 
   @Prop({
     trim: true,
@@ -42,4 +40,4 @@ export class FastestLap {
   year: string;
 }
 
-export const FastestLapSchema = SchemaFactory.createForClass(FastestLap);
+export const TeamSchema = SchemaFactory.createForClass(Team);

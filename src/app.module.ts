@@ -9,6 +9,8 @@ import { CrawlService } from './crawl/crawl.service';
 import { CrawlModule } from './crawl/crawl.module';
 import { HttpModule } from '@nestjs/axios';
 import { FastestLapsModule } from './fastest-laps/fastest-laps.module';
+import { DriversModule } from './drivers/drivers.module';
+import { TeamsModule } from './teams/teams.module';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { FastestLapsModule } from './fastest-laps/fastest-laps.module';
     RacesModule,
     CrawlModule,
     FastestLapsModule,
+    DriversModule,
+    TeamsModule,
   ],
   controllers: [AppController],
   providers: [AppService, CrawlService],

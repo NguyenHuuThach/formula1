@@ -1,16 +1,16 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
-export type FastestLapDocument = HydratedDocument<FastestLap>;
+export type DriverDocument = HydratedDocument<Driver>;
 
 @Schema({ timestamps: true })
-export class FastestLap {
+export class Driver {
   @Prop({
     trim: true,
     maxLength: 150,
     default: '',
   })
-  grandPrix: string;
+  pos: string;
 
   @Prop({
     trim: true,
@@ -24,6 +24,13 @@ export class FastestLap {
     maxLength: 150,
     default: '',
   })
+  nationality: string;
+
+  @Prop({
+    trim: true,
+    maxLength: 150,
+    default: '',
+  })
   car: string;
 
   @Prop({
@@ -31,7 +38,12 @@ export class FastestLap {
     maxLength: 150,
     default: '',
   })
-  time: string;
+  pts: string;
+
+  @Prop({
+    default: [],
+  })
+  standings: Array<Object>;
 
   @Prop({
     trim: true,
@@ -42,4 +54,4 @@ export class FastestLap {
   year: string;
 }
 
-export const FastestLapSchema = SchemaFactory.createForClass(FastestLap);
+export const DriverSchema = SchemaFactory.createForClass(Driver);

@@ -24,4 +24,14 @@ export class CrawlController {
   async crawlFastestLaps() {
     return await this.crawlService.crawlFastestLaps();
   }
+
+  @Get('teams')
+  async crawlTeams() {
+    return await this.crawlService.crawlTeams();
+  }
+
+  @Get('drivers')
+  async crawlDrivers() {
+    return await this.crawlService.crawlDrivers();
+  }
 }
